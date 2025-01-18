@@ -118,6 +118,14 @@ class LinkedList:
 #Purpose: Remove the first node of the beginning of the list
 
 
+    def get(self, index):
+        if index < 0 or index >= self.length:
+            return None
+        temp = self.head
+        for _ in range(index):
+            temp = temp.next
+        return temp.value
+
 my_linked_list = LinkedList(2)
 my_linked_list.append(3)
 
@@ -140,11 +148,13 @@ my_linked_list.append(3)
 # # (None) Item - Returns None (since the list is empty)
 # print(my_linked_list.pop())
 
-# (2) Items - Return 2 Node
-print(my_linked_list.pop_first())
+# # (2) Items - Return 2 Node
+# print(my_linked_list.pop_first())
 
-# (1) Items - Return 1 Node
-print(my_linked_list.pop_first())
+# # (1) Items - Return 1 Node
+# print(my_linked_list.pop_first())
 
-# (0) Items - Return Node
-print(my_linked_list.pop_first())
+# # (0) Items - Return Node
+# print(my_linked_list.pop_first())
+
+print(my_linked_list.get(0))
