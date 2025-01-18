@@ -87,9 +87,28 @@ class LinkedList:
 # Return the value of the removed node.
 
 
-my_linked_list = LinkedList(1)
-my_linked_list.append(2)
+    def prepend(self, value):
+        new_node = Node(value)
+        if self.length == 0:
+            self.head = new_node
+            self.tail = new_node
+        else:
+            new_node.next = self.head
+            self.head = new_node
+        self.length += 1
+        return True
 
+# Purpose: Adds a new node to the beginning of the list.
+# Logic:
+# If the list is empty, set the new node as both the head and tail.
+# Otherwise, link the new node to the current head and update the head.
+# Increment the length.
+
+
+my_linked_list = LinkedList(2)
+my_linked_list.append(3)
+
+my_linked_list.prepend(1)
 print('Head:', my_linked_list.head.value)
 print('Tail:', my_linked_list.tail.value)
 print('Length:', my_linked_list.length, '\n')
