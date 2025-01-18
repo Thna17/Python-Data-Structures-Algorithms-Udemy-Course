@@ -74,7 +74,7 @@ class LinkedList:
         if self.length == 0:
             self.head = None
             self.tail = None
-        return temp.value
+        return temp
 
 # Purpose: Removes and returns the last node from the list.
 # Logic: 
@@ -104,23 +104,47 @@ class LinkedList:
 # Otherwise, link the new node to the current head and update the head.
 # Increment the length.
 
+    def pop_first(self):
+        if self.length == 0:
+            return None
+        temp = self.head
+        self.head = self.head.next
+        temp.next = None
+        self.length -= 1
+        if self.length == 0:
+            self.tail == None
+        return temp
+
+#Purpose: Remove the first node of the beginning of the list
+
 
 my_linked_list = LinkedList(2)
 my_linked_list.append(3)
 
-my_linked_list.prepend(1)
-print('Head:', my_linked_list.head.value)
-print('Tail:', my_linked_list.tail.value)
-print('Length:', my_linked_list.length, '\n')
+# my_linked_list.prepend(1)
 
-print('Linked List:')
-my_linked_list.print_list()
 
-# (2) Items - Returns 2 Node
-print(my_linked_list.pop())
+# print('Head:', my_linked_list.head.value)
+# print('Tail:', my_linked_list.tail.value)
+# print('Length:', my_linked_list.length, '\n')
 
-# (1) Item - Returns 1 Node
-print(my_linked_list.pop())
+# print('Linked List:')
+# my_linked_list.print_list()
 
-# (None) Item - Returns None (since the list is empty)
-print(my_linked_list.pop())
+# # (2) Items - Returns 2 Node
+# print(my_linked_list.pop())
+
+# # (1) Item - Returns 1 Node
+# print(my_linked_list.pop())
+
+# # (None) Item - Returns None (since the list is empty)
+# print(my_linked_list.pop())
+
+# (2) Items - Return 2 Node
+print(my_linked_list.pop_first())
+
+# (1) Items - Return 1 Node
+print(my_linked_list.pop_first())
+
+# (0) Items - Return Node
+print(my_linked_list.pop_first())
