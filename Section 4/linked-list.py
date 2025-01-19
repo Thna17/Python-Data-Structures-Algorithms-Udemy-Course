@@ -116,6 +116,9 @@ class LinkedList:
         return temp
 
 #Purpose: Remove the first node of the beginning of the list
+#Logic:
+#If the list is empty, return None
+
 
 
     def get(self, index):
@@ -126,12 +129,22 @@ class LinkedList:
             temp = temp.next
         return temp
     
+#Purpose: Get the node at the given index
+#Logic:
+#If the index is invalid, return None
+    
     def set_value(self, index, value):
         temp = self.get(index)
         if temp:
             temp.value = value
             return True
         return False
+
+# Purpose: Set the value of the node at the given index
+# Logic:
+# Get the node at the given index.
+# If the node exists, update its value and return True.
+# Otherwise, return False.
 
     def insert(self, index, value):
         if index < 0 or index >= self.length:
@@ -146,12 +159,45 @@ class LinkedList:
         temp.next = new_node
         self.length += 1
         return True
+
+# Purpose: Insert a new node at the given index
+# Logic:
+# If the index is invalid, return False.
+# If the index is 0, use the prepend method.
+# If the index is the length of the list, use the append method.
+# Otherwise, create a new node and link it to the previous node and the next node.
+# Increment the length and return True.    
+
+
+    def remove(self, index):
+        if index < 0 or index >= self.length:
+            return False
+        if index == 0:
+            return self.pop_first()
+        if index == self.length - 1:
+            return self.pop()
+        pre = self.get(index - 1)
+        temp = pre.next
+        pre.next = temp.next
+        self.length -= 1
+        return temp
     
+# Purpose: Remove the node at the given index
+# Logic:
+# If the index is invalid, return False.
+# If the index is 0, use the pop_first method.
+# If the index is the last node, use the pop method.
+# Otherwise, get the previous node and the target node.
+# Link the previous node to the target node's next node.
+# Decrement the length and return the target node.
 
-my_linked_list = LinkedList(2)
+
+my_linked_list = LinkedList(11)
 my_linked_list.append(3)
+my_linked_list.append(23)
+my_linked_list.append(7)
 
-my_linked_list.prepend(1)
+# my_linked_list.prepend(1)
 
 
 # print('Head:', my_linked_list.head.value)
@@ -181,6 +227,8 @@ my_linked_list.prepend(1)
 
 # print(my_linked_list.get(0))
 
-my_linked_list.set_value(1, 2)
-my_linked_list.insert(1, 1)
+# my_linked_list.set_value(1, 2)
+# my_linked_list.insert(1, 1)
+print(my_linked_list.remove(2), '\n')
 my_linked_list.print_list()
+
