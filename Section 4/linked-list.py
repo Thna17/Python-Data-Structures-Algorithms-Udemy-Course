@@ -191,6 +191,17 @@ class LinkedList:
 # Link the previous node to the target node's next node.
 # Decrement the length and return the target node.
 
+    def reverve(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
 
 my_linked_list = LinkedList(11)
 my_linked_list.append(3)
@@ -204,8 +215,8 @@ my_linked_list.append(7)
 # print('Tail:', my_linked_list.tail.value)
 # print('Length:', my_linked_list.length, '\n')
 
-# print('Linked List:')
-# my_linked_list.print_list()
+print('Linked List:')
+my_linked_list.print_list()
 
 # # (2) Items - Returns 2 Node
 # print(my_linked_list.pop())
@@ -229,6 +240,10 @@ my_linked_list.append(7)
 
 # my_linked_list.set_value(1, 2)
 # my_linked_list.insert(1, 1)
-print(my_linked_list.remove(2), '\n')
-my_linked_list.print_list()
 
+# print(my_linked_list.remove(2), '\n')
+# my_linked_list.print_list()
+
+my_linked_list.reverve()
+print('\nReversed Linked List:')
+my_linked_list.print_list()
